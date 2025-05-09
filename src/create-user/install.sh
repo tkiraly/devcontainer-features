@@ -10,6 +10,7 @@ fi
 
 if [ "$CREATE" = "true" ] && ! id "$_REMOTE_USER"; then
   echo "User does not exist - starting creation"
+  groupadd $_REMOTE_USER
   useradd -g $_REMOTE_USER -m "$_REMOTE_USER"
   echo "$_REMOTE_USER:$_REMOTE_USER" | chpasswd
 elif ! id "$_REMOTE_USER"; then
